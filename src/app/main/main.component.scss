@@ -1,0 +1,21 @@
+.movies-raking {
+  width: 80vw;
+  margin: 0 auto;
+
+  .title {
+    font-size: 24px;
+    color: #386071;
+    margin-top: 24px;
+    margin-bottom: 32px;
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    app-filter + app-filter {
+      margin-left: 16px;
+    }
+  }
+}

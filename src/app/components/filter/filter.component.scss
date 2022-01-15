@@ -1,0 +1,22 @@
+.filter {
+  padding: 8px 12px;
+  border: 1px solid #78849e66;
+  border-radius: 20px;
+  opacity: 1;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  letter-spacing: 0px;
+  color: #78849e;
+  background-color: #ffffff;
+  width: fit-content;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.selected {
+    color: #012433;
+    background-color: #00baff;
+  }
+}
