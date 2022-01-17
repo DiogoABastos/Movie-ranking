@@ -1,0 +1,17 @@
+.filters {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  app-filter + app-select {
+    margin-left: 16px;
+  }
+
+  .reset {
+    margin-left: 8px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

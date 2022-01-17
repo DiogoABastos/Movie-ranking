@@ -1,0 +1,20 @@
+<div
+  (click)="toggleShowDropdown()"
+  class="select"
+  [class.selected]="selectOption && selectOption.value !== null"
+>
+  {{ placeholder }}
+
+  <div class="wrapper" [class.no-display]="!(showDropdown | async)">
+    <div class="dropdown" [class.no-display]="!(showDropdown | async)">
+      <h1 class="title">{{ title }}</h1>
+      <div
+        *ngFor="let option of options"
+        class="option"
+        (click)="changeSelectedOption(option)"
+      >
+        {{ option.label }}
+      </div>
+    </div>
+  </div>
+</div>

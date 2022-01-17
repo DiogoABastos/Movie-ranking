@@ -1,0 +1,31 @@
+<div class="wrapper">
+  <div class="modal">
+    <div class="header">
+      <h1 class="title">{{ title }}</h1>
+      <app-modal-close (close)="close()"></app-modal-close>
+    </div>
+
+    <div class="details">
+      <div
+        *ngFor="let detail of body"
+        class="detail"
+        [class.full-row]="!detail.data"
+        [class.inline]="detail.data && detail.data.type === 'inline'"
+      >
+        <span
+          *ngIf="detail.data && detail.data.type === 'inline'"
+          class="inline-detail"
+        >
+          <h2 class="detail-title">{{ detail.title }}</h2>
+          <p class="detail-info" [style.color]="detail.data.color">
+            {{ detail.info }}
+          </p>
+        </span>
+        <span *ngIf="!detail.data" class="detail-data">
+          <h2 class="detail-title">{{ detail.title }}</h2>
+          <p class="detail-info">{{ detail.info }}</p>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

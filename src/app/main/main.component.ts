@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { DetailsService } from './services/details.service';
 import { MainService } from './services/main.service';
 
 @Component({
@@ -7,15 +8,25 @@ import { MainService } from './services/main.service';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  constructor(public mainService: MainService) {}
+  @ViewChild('modal', { read: ViewContainerRef })
+  entry!: ViewContainerRef;
+
+  constructor(
+    public mainService: MainService,
+    private detailsService: DetailsService
+  ) {}
 
   ngOnInit(): void {}
 
-  updateTop10Filter() {
-    this.mainService.top10.next(!this.mainService.top10.value);
+  ngAfterViewInit() {
+    this.detailsService.modalRef.next(this.entry);
   }
 
-  updateTop10PerYearFilter() {
-    this.mainService.top10PerYear.next(!this.mainService.top10PerYear.value);
+  setMovieId(id: string) {
+    this.detailsService.id.next(id);
+  }
+
+  onScroll(): void {
+    this.mainService.loadMore();
   }
 }

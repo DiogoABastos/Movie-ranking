@@ -1,0 +1,20 @@
+<div class="filters">
+  <app-filter
+    text="Top 10 Revenue"
+    [selected]="mainService.top10 | async"
+    (updateState)="updateTop10Filter()"
+  ></app-filter>
+  <app-select
+    placeholder="Top 10 Revenue per Year"
+    title="Select a year"
+    [options]="mainService.top10PerYearOptions | async"
+    [selectOption]="mainService.top10PerYear | async"
+    (selectedOptionChange)="updateTop10PerYearFilter($event)"
+  ></app-select>
+  <img
+    src="assets/images/reset.svg"
+    alt="reset"
+    class="reset"
+    (click)="reset()"
+  />
+</div>

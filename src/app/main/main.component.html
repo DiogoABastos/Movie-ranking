@@ -1,15 +1,15 @@
 <div class="movies-raking">
   <h1 class="title">Movie ranking</h1>
-  <div class="filters">
-    <app-filter
-      text="Top 10 Revenue"
-      [selected]="mainService.top10 | async"
-      (updateState)="updateTop10Filter()"
-    ></app-filter>
-    <app-filter
-      text="Top 10 Revenue per Year"
-      [selected]="mainService.top10PerYear | async"
-      (updateState)="updateTop10PerYearFilter()"
-    ></app-filter>
-  </div>
+  <app-filters></app-filters>
+  <app-table
+    [loading]="mainService.loadingData | async"
+    [headers]="mainService.tableHeaders | async"
+    [rows]="mainService.tableRows | async"
+    (action)="setMovieId($event)"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()"
+  ></app-table>
+  <div #modal></div>
 </div>

@@ -1,0 +1,9 @@
+<div class="close-btn" (click)="onClick()">
+  <img
+    [src]="imgSrc | async"
+    (mouseover)="onMouseOver()"
+    (mouseout)="onMouseOut()"
+    alt="close button"
+  />
+  <span>Close</span>
+</div>

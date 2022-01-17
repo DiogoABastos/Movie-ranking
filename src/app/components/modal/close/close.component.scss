@@ -1,0 +1,32 @@
+.close-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #718fa2;
+
+  img {
+    margin-bottom: 1px;
+  }
+
+  span {
+    font-size: 8px;
+    line-height: 16px;
+    letter-spacing: 0.64px;
+    text-transform: uppercase;
+  }
+
+  &:hover {
+    cursor: pointer;
+    flex-direction: row-reverse;
+    color: #012433;
+
+    img {
+      margin: 0;
+    }
+
+    span {
+      margin-right: 8px;
+    }
+  }
+}

@@ -1,1 +1,33 @@
-<p>table works!</p>
+<div class="table-box-content">
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers" class="header">
+          {{ header.label }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of rows">
+        <td
+          [title]="column.data"
+          [class.isIndex]="i === 0"
+          [class.actions]="column.type === 'modal'"
+          *ngFor="let column of row.columns; let i = index"
+        >
+          <span *ngIf="column.type === 'text'">
+            {{ column.data }}
+          </span>
+          <span *ngIf="column.type === 'number'">
+            {{ column.data }}
+          </span>
+          <span *ngIf="column.type === 'modal'">
+            <img [src]="column.data.src" (click)="sendData(column.data.data)" />
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="!loading && !rows.length" class="no-results">No results</div>
+  <app-spinner *ngIf="loading"></app-spinner>
+</div>
