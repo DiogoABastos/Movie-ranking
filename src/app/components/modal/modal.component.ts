@@ -13,9 +13,7 @@ export class ModalComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log('eheh');
-  }
+  ngOnInit(): void {}
 
   close() {
     this.closeMeEvent.emit();
