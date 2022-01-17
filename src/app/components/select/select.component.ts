@@ -28,5 +28,6 @@ export class SelectComponent implements OnInit {
   changeSelectedOption(option: SelectEntry): void {
     this.selectOption = option;
     this.selectedOptionChange.emit(option);
+    this.toggleShowDropdown();
   }
 }

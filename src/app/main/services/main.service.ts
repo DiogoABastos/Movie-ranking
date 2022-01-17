@@ -22,7 +22,6 @@ export class MainService {
   top10PerYearOptions: BehaviorSubject<SelectEntry[]> = new BehaviorSubject<
     SelectEntry[]
   >([
-    new SelectEntry('All', null),
     new SelectEntry('2016', 2016),
     new SelectEntry('2015', 2015),
     new SelectEntry('2014', 2014),
@@ -172,7 +171,7 @@ export class MainService {
   }
 
   private displayRevenue(revenue: number): string {
-    const revenueInMillions: number = revenue * 1000000;
+    const revenueInMillions: number = Math.round(revenue * 1000000);
 
     return formatCurrency(revenueInMillions);
   }
@@ -202,7 +201,7 @@ export class MainService {
           columns.length + 1,
           'revenue',
           'text',
-          this.displayRevenue(item.revenue)
+          item.revenue ? this.displayRevenue(item.revenue) : null
         )
       );
       columns.push(

@@ -123,7 +123,12 @@ export class DetailsService {
     body.push(new MovieDetail('Rating', this.data.value.rating));
     body.push(new MovieDetail('Votes', this.data.value.votes));
     body.push(
-      new MovieDetail('Revenue', this.displayRevenue(this.data.value.revenue))
+      new MovieDetail(
+        'Revenue',
+        this.data.value.revenue
+          ? this.displayRevenue(this.data.value.revenue)
+          : 'N/A'
+      )
     );
     body.push(new MovieDetail('Metascore', this.data.value.metascore));
 
@@ -131,7 +136,7 @@ export class DetailsService {
   }
 
   private displayRevenue(revenue: number): string {
-    const revenueInMillions: number = revenue * 1000000;
+    const revenueInMillions: number = Math.round(revenue * 1000000);
 
     return formatCurrency(revenueInMillions);
   }

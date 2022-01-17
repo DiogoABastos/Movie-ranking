@@ -24,6 +24,7 @@
           <span *ngIf="column.type === 'modal'">
             <img [src]="column.data.src" (click)="sendData(column.data.data)" />
           </span>
+          <span *ngIf="!column.data">N/A</span>
         </td>
       </tr>
     </tbody>
